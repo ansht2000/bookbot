@@ -1,6 +1,11 @@
 def main():
-    book_path = "books/frankenstein.txt"
-    text = get_book_text(book_path)
+    text_name = input("Enter the name of a text file in your local directory, or the path to that file from your local directory: \n")
+    book_path = text_name
+    try:
+        text = get_book_text(book_path)
+    except Exception:
+        print("Invalid path to file")
+        exit(1)
     word_count = get_word_count(text)
     chars = get_char_freqs(text)
     sorted_chars = sorted(chars.items(), key=lambda char_freq: char_freq[1], reverse=True)
